@@ -10,11 +10,11 @@ The classification is based on ratio between distance and height from the medial
 This software runs on `Python3.x` and the following packages are necessary:
 * `numpy`
 * `shapely`
-* `scipy` ???
+* `scipy`
 * `Rtree`
 * `pyhull`
 * `fiona`
-* `matplotlib` ???
+* `matplotlib`
 
 ## Usage
 The program can be run by using `python classify_roads.py`.
