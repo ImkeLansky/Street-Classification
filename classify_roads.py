@@ -1,17 +1,10 @@
 """
 Students:
-Giulia Ceccarelli
-Imke Lansky
-Jinglan Li
-Konstantinos Mastorakis
-Wessel de Jongh
-
-Summary:
-
-
-Execution:
-
-
+  Giulia Ceccarelli
+  Imke Lansky
+  Jinglan Li
+  Konstantinos Mastorakis
+  Wessel de Jongh
 """
 
 import re
@@ -31,10 +24,6 @@ from rtree import index
 from pyhull.voronoi import VoronoiTess
 import fiona
 import time
-
-# pip install rtree
-# pip install osmnx
-# install the following: https://github.com/mikedh/trimesh/issues/189
 
 
 road_lengths = {'0-20': {}, '20-40': {}, '40-60': {}, '60-80': {},
@@ -823,60 +812,6 @@ def check_road_segment(r_id, road, building_data, bld_geoms, bld_ids, method, id
             vor = Voronoi(vor_pts)
             sub_left = {k: blds_left_buffer[k] for k in road_to_building[new_id]['left']}
             sub_right = {k: blds_right_buffer[k] for k in road_to_building[new_id]['right']}
-            # visualise_buildings(blds_left_buffer, 'darkturquoise')
-            # visualise_buildings(blds_right_buffer, 'seagreen')
-            # visualise_buildings(sub_left, 'green')
-            # visualise_buildings(sub_right, 'green')
-            # visualise_buffer(sub_buffers[new_id]['left'])
-            # visualise_buffer(sub_buffers[new_id]['right'])
-            # visualise_road(road_part)
-            # plt.title("Buildings within 60m of the road", fontweight="bold", fontsize=10)
-
-            # legend_elements = [Line2D([0], [0], color='maroon', lw=1, label='Road'),
-            #                    Line2D([0], [0], color='royalblue', lw=1, label='Buffer', linestyle='--'),
-            #                    Line2D([0], [0], color='darkturquoise', lw=1, label='Buildings left'),
-            #                    Line2D([0], [0], color='seagreen', lw=1, label='Buildings right')]
-
-            # plt.legend(handles=legend_elements, loc='upper left', fontsize='small')
-            # plt.xlabel("x-coordinate*")
-            # plt.ylabel("y-coordinate*")
-            # plt.tight_layout()
-            # plt.annotate('* In RD NEW', xy=(1, 0), xycoords='figure fraction',
-            #              xytext=(-15, 5), textcoords='offset pixels',
-            #              horizontalalignment='right',
-            #              verticalalignment='bottom', fontsize=7)
-            # plt.savefig(new_id + "_layout.pdf", dpi=300, format='pdf')
-
-            # fig = plt.figure()
-            # fig = voronoi_plot_2d(vor, show_vertices=False, line_colors='lightgrey', line_width=1,
-            #                 line_alpha=1, point_size=4)
-
-            # ax = fig.add_subplot(1, 1, 1)
-            # visualise_buildings(blds_left_buffer, 'red')
-            # visualise_buildings(blds_right_buffer, 'red')
-            # visualise_buildings(sub_left, 'green')
-            # visualise_buildings(sub_right, 'green')
-            # visualise_road(road_part)
-            # ax.set_title("Voronoi plot showing building cells touching road cells",
-            #           fontweight="bold", fontsize=10)
-            # ax.set_xlabel("x-coordinate*")
-            # ax.set_ylabel("y-coordinate*")
-            # ax.set_xlim(122235, 122287)
-            # ax.set_ylim(486325, 486381)
-            # ax.get_yaxis().get_major_formatter().set_useOffset(False)
-            # ax.get_xaxis().get_major_formatter().set_useOffset(False)
-            # ax.ticklabel_format(axis='both', style='plain')
-            # legend_elements = [Line2D([0], [0], color='maroon', lw=1, label='Road'),
-            #                    Line2D([0], [0], color='green', lw=1, label='Facing road'),
-            #                    Line2D([0], [0], color='red', lw=1, label='Not facing road')]
-            # ax.legend(handles=legend_elements, loc='upper left', fontsize='small')
-            # fig.tight_layout()
-            # ax.annotate('* In RD NEW', xy=(1, 0), xycoords='figure fraction',
-            #              xytext=(-15, 5), textcoords='offset pixels',
-            #              horizontalalignment='right',
-            #              verticalalignment='bottom', fontsize=7)
-            # # plt.show()
-            # plt.savefig(new_id + "_voronoi_bld_cells.pdf", dpi=300, format='pdf')
 
         # Get the classification for the given road segment and the points
         # beloning to that road segment if the ray-tracing option is used.
@@ -889,17 +824,6 @@ def check_road_segment(r_id, road, building_data, bld_geoms, bld_ids, method, id
             classification[new_id]['class'] = classify(method, building_data, blds_left,
                                                        blds_right, weights_left, weights_right,
                                                        road_part, points_classified[new_id])
-
-        # Extract a temporary sub dictionary for buildings that are facing the road
-        # and visualise them.
-        # sub_left = {k: blds_left_buffer[k] for k in road_to_building[new_id]['left']}
-        # sub_right = {k: blds_right_buffer[k] for k in road_to_building[new_id]['right']}
-        # voronoi_plot_2d(vor, show_vertices=False, line_colors='peru', line_width=1,
-        #                   line_alpha=0.6, point_size=1)
-        # visualise_buildings(sub_left)
-        # visualise_buildings(sub_right)
-        # visualise_road(road)
-        # plt.show()
 
     return classification, points_classified
 
