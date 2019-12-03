@@ -1,0 +1,6 @@
+{
+  "roads": "<path_to_file>",
+  "buildings": "<path_to_file>",
+  "method": "raytracing_both",
+  "percentile": "roof-0.95"
+}
